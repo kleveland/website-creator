@@ -23,3 +23,7 @@ Using the left navigation menu you can add new panels and change the wallpaper.
 
 When you are satisfied, select "Generate HTML" to start a download of your customized site.
 
+Demo
+---------------------------------
+http://kleveland.github.io/HTML-Panel-Page-Creator/demo/
+
