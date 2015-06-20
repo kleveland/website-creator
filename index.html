@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HTML Template</title>
+
+    <!-- REMOVABLE FILES -->
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="base64/base64.js"></script>
+    <script src="js/jquery.js"></script>
+    <!-- JS EDITORS -->
+
+    <script src="ckeditor/ckeditor.js"></script>
+    <script src="ckeditor/adapters/jquery.js"></script>
+
+    <!-- END JS EDITORS -->
+
+    <!-- JSZIP -->
+    <script type="text/javascript" src="jszip/dist/jszip.js"></script>
+    <script type="text/javascript" src="filesaver/FileSaver.js"></script>
+    <!-- END JSZIP -->
+
+    <!-- Bootstrap-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!--End Bootstrap-->
+
+    <!-- END REMOVABLE FILES -->
+
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+
+    <!-- EXTRA CODE -->
+
+</head>
+
+<body>
+    <!-- END EXTRA CODE -->
+    <!-- TOOLS -->
+    <button type="button" id="toolopener" class="btn btn-default">
+        Open Tool Menu
+    </button>
+    <div class="toolcontainer">
+
+        <!-- PANEL SELECT -->
+        <div class="sidetoolcontainer" style="float: left;">
+            <div class="btn-group-vertical" id="paneladd" role="group" aria-label="...">
+                <button type="button" class="btn btn-default" id="panel-full-selector">Add Full Panel</button>
+                <button type="button" class="btn btn-default" id="panel-half-selector">Add Half Panel</button>
+                <button type="button" class="btn btn-default" id="panel-quarter-selector">Add Quarter Panel</button>
+            </div>
+
+            <button type="button" id="submit" class="btn btn-default">
+                Update Selected Panel
+            </button>
+            <button type="button" id="delete" class="btn btn-default">
+                Delete Selected Panel
+            </button>
+
+            <div class="input-group" id="wallpaperset">
+                <span class="input-group-btn">
+        <button class="btn btn-default" id="changewallpaper" type="button">Change Wallpaper</button>
+      </span>
+                <input type="text" class="form-control" id="wallpaperurl" placeholder="Image url...">
+            </div>
+
+
+            <button type="button" id="export" class="btn btn-default">
+                Genereate HTML
+            </button>
+
+        </div>
+        <!-- PANEL SELECT END -->
+
+        <!-- EDITOR -->
+        <div class="editor" id="editpanel">
+            <textarea class="ckeditor" id="editor1" name="editor1"></textarea>
+        </div>
+
+        <div class="sidetoolcontainer" style="float: right;">
+            <!-- Nav/logo -->
+            <img class="logo" src="img/smalllogo.png"></img>
+            <!-- End Nav/logo -->
+            <div class="editortoggle"></div>
+            <button type="button" id="editortoggle" class="btn btn-default">
+                Close Tool Menu
+            </button>
+        </div>
+        <!-- EDITOR END -->
+    </div>
+    <!-- END TOOLS -->
+
+    <div class="navbarbreak"></div>
+    <div class="content">
+        <div class="panels" id="panel-full">
+        </div>
+    </div>
+
+    <!-- EDITOR SPACER -->
+    <div class="editorspacer"></div>
+    <!-- END EDITOR SPACER -->
+</body>
+
+</html>
