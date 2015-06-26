@@ -35,15 +35,10 @@ $(document).ready(function () {
         $('#toolopener').hide();
     });
 
-    $(document).on('click', '#submit', function (event) {
-        $(focused).empty();
-        $(focused).append($('#editor1').val());
-    });
-
     $(document).on('click', '#delete', function (event) {
         $(focused).remove();
     });
-    
+
     $('#editor1').ckeditor();
 
     $('#editortoggle').click(function () {
@@ -53,10 +48,6 @@ $(document).ready(function () {
         $("html, body").animate({
             scrollBottom: $(document).height()
         }, "slow");
-    });
-
-    $('#panelbutton').click(function () {
-        $('#panel-full').append($('#wysiwyg').val());
     });
 
     $('#panel-full-selector').click(function () {
@@ -72,13 +63,26 @@ $(document).ready(function () {
     });
 
     $(document).on('click', '.panels', function () {
-        $('.panels').each(function (i, obj) {
-            $(obj).removeClass('selected');
-        });
-        $(this).addClass('selected');
-        focused = this;
+        if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+            CKEDITOR.instances['editor1'].setData("");
+            focused = null;
+        } else {
+            $('.panels').each(function (i, obj) {
+                $(obj).removeClass('selected');
+                //REMOVE XBUTTON
+            });
+            $(this).addClass('selected');
+            focused = this;
+        }
+        CKEDITOR.instances['editor1'].setData(this.innerHTML);
     });
 
+
+    CKEDITOR.instances['editor1'].on('change', function () {
+        $(focused).empty();
+        $(focused).append($('#editor1').val());
+    });
 
     $('#export').click(function () {
 
@@ -94,6 +98,7 @@ $(document).ready(function () {
 
         htmlString = htmlString.split('<!-- REMOVABLE FILES -->')[0] + htmlString.split('<!-- END REMOVABLE FILES -->')[1];
         htmlString = htmlString.split('<!-- TOOLS -->')[0] + htmlString.split('<!-- END TOOLS -->')[1];
+        htmlString = htmlString.split('<!-- XBUTTON -->')[0] + htmlString.split('<!-- END XBUTTON -->')[1];
         htmlString = htmlString.split('<!-- EXTRA CODE -->')[0] + '<body>' + htmlString.split('<!-- END EXTRA CODE -->')[1];
         htmlString = htmlString.split('<!-- EDITOR SPACER -->')[0] + htmlString.split('<!-- END EDITOR SPACER -->')[1];
 
