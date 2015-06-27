@@ -26,6 +26,11 @@ Using the left navigation menu you can add new panels and change the wallpaper.
 
 When you are satisfied, select "Generate HTML" to start a download of your customized site.
 
+NOTE: When Generating your HTML you must be doing so through a web host of some sort as it requires http://
+If you'd like a better explanation, look at the console when trying to generate HTML locally to see the error details.
+
+Thanks!
+
 Demo
 ---------------------------------
 http://kleveland.github.io/HTML-Panel-Page-Creator/demo/
