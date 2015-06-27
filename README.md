@@ -10,6 +10,9 @@ base64.js: https://github.com/dankogai/js-base64
 
 jszip.js: https://stuk.github.io/jszip/
 
+Bootstrap Colorpicker 2.2: https://github.com/mjolnic/bootstrap-colorpicker
+
+Each library contains their own licensing in which this application fully upholds to the degree in which need be for each library's own license.
 
 Usage
 ---------------------------------
