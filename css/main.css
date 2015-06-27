@@ -16,7 +16,6 @@ body {
 /* PANEL SELECT */
 
 .logo {
-    margin-top: 20px;
     width: 50%;
     display: table;
     margin-left: auto;
@@ -75,7 +74,7 @@ body {
 
 .menuoperator {
     width: 25%;
-    height: 400px;
+    height: auto;
     position: fixed;
     right: 0;
     bottom: 0;
@@ -103,7 +102,6 @@ body {
 }
 
 #editortoggle {
-    margin-top: 20px;
     width: 70%;
     display: table;
     margin-left: auto;
