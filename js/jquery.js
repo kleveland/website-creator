@@ -18,7 +18,6 @@ $(document).ready(function () {
         $('html').css('background-image', 'url("' + $('#wallpaperurl').val() + '")');
         $('body').css('background-image', 'url("' + $('#wallpaperurl').val() + '")');
         cssString = cssString.split('/*START BG*/')[0] + '/*START BG*/' + 'background-image: url("' + $('#wallpaperurl').val() + '");' + '/*END BG*/' + cssString.split('/*END BG*/')[1];
-        cssString = cssString.split('/* PANEL SELECT */')[0] + cssString.split('/* END PANEL SELECT */')[1];
         convertImgToBase64URL($('#wallpaperurl').val(), function (base64Img) {
             defaultbg = base64Img;
             console.log(defaultbg);
@@ -39,30 +38,30 @@ $(document).ready(function () {
         $(focused).remove();
     });
 
-    $('#editor1').ckeditor();
+    $('#editor1').ckeditor({});
+    
+    CKEDITOR.config.autoParagraph = false;
+    
+    $('.colorpicker').colorpicker();
 
     $('#editortoggle').click(function () {
-        $(".toolcontainer").toggle('fast', 'swing');
+        $("#tools").toggle('fast', 'swing');
         $(".editorspacer").toggle('fast', 'swing');
-        $('#toolopener').show();
         $("html, body").animate({
             scrollBottom: $(document).height()
         }, "slow");
     });
 
-    $('#panel-full-selector').click(function () {
-        $('.content').append('<div class="panels" id="panel-full"></div>');
-    });
-
-    $('#panel-half-selector').click(function () {
-        $('.content').append('<div class="panels" id="panel-half"></div>');
-    });
-
-    $('#panel-quarter-selector').click(function () {
-        $('.content').append('<div class="panels" id="panel-quarter"></div>');
+    $('#paneladd').click(function () {
+        if ($('#panelheight').val().indexOf("px") != -1 || $('#panelwidth').val().indexOf("px") != -1 || $('#panelheight').val().indexOf("%") != -1 || $('#panelwidth').val().indexOf("%") != -1) {
+ $('.content').append('<div class="panels" style="width:' + $('#panelwidth').val() + '; height:' + $('#panelheight').val() + '; background-color:' + $('#panelcolor').val() + ';"></div>');
+        } else {
+     alert("Please correct the panel inputs accordingly; the width and height must be entered like so (100px or 100%)");
+        }
     });
 
     $(document).on('click', '.panels', function () {
+        var content = this.innerHTML;
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected');
             CKEDITOR.instances['editor1'].setData("");
@@ -70,12 +69,11 @@ $(document).ready(function () {
         } else {
             $('.panels').each(function (i, obj) {
                 $(obj).removeClass('selected');
-                //REMOVE XBUTTON
             });
             $(this).addClass('selected');
             focused = this;
         }
-        CKEDITOR.instances['editor1'].setData(this.innerHTML);
+        CKEDITOR.instances['editor1'].setData(content);
     });
 
 
@@ -95,12 +93,15 @@ $(document).ready(function () {
         var html = $('html').clone();
 
         var htmlString = html.html();
-
+        
+        cssString = cssString.split('/* PANEL SELECT */')[0] + cssString.split('/* END PANEL SELECT */')[1];
+        
         htmlString = htmlString.split('<!-- REMOVABLE FILES -->')[0] + htmlString.split('<!-- END REMOVABLE FILES -->')[1];
         htmlString = htmlString.split('<!-- TOOLS -->')[0] + htmlString.split('<!-- END TOOLS -->')[1];
         htmlString = htmlString.split('<!-- XBUTTON -->')[0] + htmlString.split('<!-- END XBUTTON -->')[1];
-        htmlString = htmlString.split('<!-- EXTRA CODE -->')[0] + '<body>' + htmlString.split('<!-- END EXTRA CODE -->')[1];
+        htmlString = htmlString.split('<!-- EXTRA CODE -->')[0] + '</head><body>' + htmlString.split('<!-- END EXTRA CODE -->')[1];
         htmlString = htmlString.split('<!-- EDITOR SPACER -->')[0] + htmlString.split('<!-- END EDITOR SPACER -->')[1];
+        htmlString = htmlString.split('<!-- END -->')[0] + "</body>";
 
         var img = zip.folder("img");
 
