@@ -25,38 +25,33 @@ $(document).ready(function () {
         });
     });
 
-    $('#toolopener').click(function () {
-        $(".toolcontainer").toggle('fast', 'swing');
-        $(".editorspacer").toggle('fast', 'swing');
-        $("html, body").animate({
-            scrollBottom: $(document).height()
-        }, "slow");
-        $('#toolopener').hide();
-    });
-
     $(document).on('click', '#delete', function (event) {
         $(focused).remove();
     });
 
     $('#editor1').ckeditor({});
-    
+
     CKEDITOR.config.autoParagraph = false;
-    
+
     $('.colorpicker').colorpicker();
 
-    $('#editortoggle').click(function () {
+    $('#tooltoggle').click(function () {
         $("#tools").toggle('fast', 'swing');
-        $(".editorspacer").toggle('fast', 'swing');
-        $("html, body").animate({
-            scrollBottom: $(document).height()
-        }, "slow");
+    });
+
+    $('#editortoggle').click(function () {
+        $("#editpanel").toggle('fast', 'swing');
     });
 
     $('#paneladd').click(function () {
         if ($('#panelheight').val().indexOf("px") != -1 || $('#panelwidth').val().indexOf("px") != -1 || $('#panelheight').val().indexOf("%") != -1 || $('#panelwidth').val().indexOf("%") != -1) {
- $('.content').append('<div class="panels" style="width:' + $('#panelwidth').val() + '; height:' + $('#panelheight').val() + '; background-color:' + $('#panelcolor').val() + ';"></div>');
+            /*if (focused != null) {
+                $(focused).append('<div class="panels" style="width:' + $('#panelwidth').val() + '; height:' + $('#panelheight').val() + '; background-color:' + $('#panelcolor').val() + ';"></div>');
+            } else {*/
+                $('.content').append('<div class="panels" style="width:' + $('#panelwidth').val() + '; height:' + $('#panelheight').val() + '; background-color:' + $('#panelcolor').val() + ';"></div>');
+            //}
         } else {
-     alert("Please correct the panel inputs accordingly; the width and height must be entered like so (100px or 100%)");
+            alert("Please correct the panel inputs accordingly; the width and height must be entered like so (100px or 100%)");
         }
     });
 
@@ -93,9 +88,9 @@ $(document).ready(function () {
         var html = $('html').clone();
 
         var htmlString = html.html();
-        
+
         cssString = cssString.split('/* PANEL SELECT */')[0] + cssString.split('/* END PANEL SELECT */')[1];
-        
+
         htmlString = htmlString.split('<!-- REMOVABLE FILES -->')[0] + htmlString.split('<!-- END REMOVABLE FILES -->')[1];
         htmlString = htmlString.split('<!-- TOOLS -->')[0] + htmlString.split('<!-- END TOOLS -->')[1];
         htmlString = htmlString.split('<!-- XBUTTON -->')[0] + htmlString.split('<!-- END XBUTTON -->')[1];

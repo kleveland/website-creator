@@ -11,7 +11,7 @@ body {
 }
 
 .content {
-    height: 100%;
+    height: inherit;
 }
 /* PANEL SELECT */
 
@@ -36,7 +36,6 @@ body {
     top: 20px;
     width: 300px;
 }
-
 
 #wallpaperset {
     width: 70%;
@@ -94,11 +93,13 @@ body {
     bottom: 0;
 }
 
-.editorspacer {
-    top: bottom;
-    z-index: 1;
-    width: 100%;
-    height: 400px;
+#tooltoggle {
+    width: 70%;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 100 margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #editortoggle {
@@ -106,7 +107,8 @@ body {
     display: table;
     margin-left: auto;
     margin-right: auto;
-    z-index: 100;
+    z-index: 100 margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #submit {
@@ -145,9 +147,10 @@ body {
 
 .panels {
     transition: background-color 0.5s ease;
-    overflow: hidden;
-    display: inline-block;
+    float: left;
     border-radius: 0;
     z-index: 1;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
     word-wrap: break-word;
 }
