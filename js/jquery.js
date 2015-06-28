@@ -47,7 +47,7 @@ $(document).ready(function () {
         if ($('#panelheight').val().indexOf("px") != -1 || $('#panelwidth').val().indexOf("px") != -1 || $('#panelheight').val().indexOf("%") != -1 || $('#panelwidth').val().indexOf("%") != -1) {
             /*if (focused != null) {
                 $(focused).append('<div class="panels" style="width:' + $('#panelwidth').val() + '; height:' + $('#panelheight').val() + '; background-color:' + $('#panelcolor').val() + ';"></div>');
-            } else {*/
+            //} else {*/
                 $('.content').append('<div class="panels" style="width:' + $('#panelwidth').val() + '; height:' + $('#panelheight').val() + '; background-color:' + $('#panelcolor').val() + ';"></div>');
             //}
         } else {
