@@ -1,17 +1,15 @@
 $(document).ready(function () {
-
     var focused;
     var cssString;
     var defaultbg;
 
+    $("#editpanel").hide();
+    $("#panelmenu").hide();
     getCss();
     convertImgToBase64URL('img/bg.jpg', function (base64Img) {
         defaultbg = base64Img;
         defaultbg = defaultbg.replace("data:image/png;base64,", " ");
     });
-
-
-    $('#toolopener').hide();
 
     $('#changewallpaper').click(function () {
         console.log($('#wallpaperurl').val());
@@ -35,8 +33,8 @@ $(document).ready(function () {
 
     $('.colorpicker').colorpicker();
 
-    $('#tooltoggle').click(function () {
-        $("#tools").toggle('fast', 'swing');
+    $('#paneltoggle').click(function () {
+        $("#panelmenu").toggle('fast', 'swing');
     });
 
     $('#editortoggle').click(function () {
@@ -48,7 +46,7 @@ $(document).ready(function () {
             /*if (focused != null) {
                 $(focused).append('<div class="panels" style="width:' + $('#panelwidth').val() + '; height:' + $('#panelheight').val() + '; background-color:' + $('#panelcolor').val() + ';"></div>');
             //} else {*/
-                $('.content').append('<div class="panels" style="width:' + $('#panelwidth').val() + '; height:' + $('#panelheight').val() + '; background-color:' + $('#panelcolor').val() + ';"></div>');
+            $('.content').append('<div class="panels" style="width:' + $('#panelwidth').val() + '; height:' + $('#panelheight').val() + '; background-color:' + $('#panelcolor').val() + ';"></div>');
             //}
         } else {
             alert("Please correct the panel inputs accordingly; the width and height must be entered like so (100px or 100%)");
@@ -141,4 +139,5 @@ $(document).ready(function () {
         };
         img.src = url;
     }
+    
 });
