@@ -33,20 +33,6 @@ body {
     margin-top: -15px;
 }
 
-.rightmenu {
-    position: fixed;
-    right: 20px;
-    top: 20px;
-    width: 300px;
-}
-
-.leftmenu {
-    position: fixed;
-    left: 20px;
-    top: 20px;
-    width: 300px;
-}
-
 .navbutton {
     position: relative;
     width: auto;
@@ -63,16 +49,14 @@ body {
     width: 200px;
 }
 
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
 .panelbotright .bttn {
     width: 100%;
     margin-bottom: 10px;
-}
-
-.panelbotleft {
-    bottom: 20px;
-    left: 5%;
-    position: fixed;
-    width: 200px;
 }
 
 #dimensions {
@@ -129,8 +113,11 @@ body {
 
 .panels {
     transition: background-color 0.5s ease;
-    float: left;
     border-radius: 0;
+    font-family: Arial;
+    font-size: 16px;
+    color: black;
+    float: left;
     z-index: 1;
     margin: 0 0 0 0;
     padding: 0 0 0 0;

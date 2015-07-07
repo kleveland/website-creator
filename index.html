@@ -12,6 +12,7 @@
 
     <!-- REMOVABLE FILES -->
     <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="jqueryui/jquery-ui.js"></script>
     <script src="base64/base64.js"></script>
     <script src="js/jquery.js"></script>
     <script src="colorpicker/dist/js/bootstrap-colorpicker.js"></script>
@@ -111,16 +112,20 @@
             <h3 class="panel-title">Panel Settings</h3>
         </div>
         <div class="panel-body">
+            
             <button type="button" id="paneladd" class="btn btn-default bttn">
                 Add Panel
             </button>
+            
             <button type="button" id="delete" class="btn btn-default bttn">
                 Delete Selected Panel
             </button>
+            
             <div class="input-group colorpicker bttn">
                 <input type="text" value="" id="panelcolor" placeholder="Color Chooser" class="form-control" readonly="readonly" />
                 <span class="input-group-addon"><i></i></span>
             </div>
+            
             <div class="input-group bttn">
                 <input type="text" class="form-control" id="panelwidth" placeholder="100px or 100%" value="100px" aria-describedby="basic-addon2">
                 <span class="input-group-addon" id="basic-addon2">Width</span>
@@ -130,6 +135,11 @@
                 <input type="text" class="form-control" id="panelheight" placeholder="100px or 100%" value="100px" aria-describedby="basic-addon2">
                 <span class="input-group-addon" id="basic-addon2">Height</span>
             </div>
+            
+                        <button type="button" id="addcss" class="btn btn-default bttn">
+                Additional CSS...
+            </button>
+            
         </div>
     </div>
 
@@ -139,8 +149,8 @@
     </div>
     <!-- END TOOLS -->
 
-    <div class="content">
-    </div>
+    <ul class="content">
+    </ul><!-- CONTENT END -->
 
     <!-- END -->
 </body>

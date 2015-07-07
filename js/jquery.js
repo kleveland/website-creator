@@ -1,8 +1,8 @@
 $(document).ready(function () {
-    var focused;
+    var focused = null;
     var cssString;
     var defaultbg;
-
+    $(".content").sortable();
     $("#editpanel").hide();
     $("#panelmenu").hide();
     getCss();
@@ -38,7 +38,11 @@ $(document).ready(function () {
     });
 
     $('#editortoggle').click(function () {
-        $("#editpanel").toggle('fast', 'swing');
+        if (focused != null) {
+            $("#editpanel").toggle('fast', 'swing');
+        } else {
+            alert("No panel selected");
+        }
     });
 
     $('#paneladd').click(function () {
@@ -46,7 +50,7 @@ $(document).ready(function () {
             /*if (focused != null) {
                 $(focused).append('<div class="panels" style="width:' + $('#panelwidth').val() + '; height:' + $('#panelheight').val() + '; background-color:' + $('#panelcolor').val() + ';"></div>');
             //} else {*/
-            $('.content').append('<div class="panels" style="width:' + $('#panelwidth').val() + '; height:' + $('#panelheight').val() + '; background-color:' + $('#panelcolor').val() + ';"></div>');
+            $('.content').append('<li class="panels" style="width:' + $('#panelwidth').val() + '; height:' + $('#panelheight').val() + '; background-color:' + $('#panelcolor').val() + ';"><!-- END ITEM --></li>');
             //}
         } else {
             alert("Please correct the panel inputs accordingly; the width and height must be entered like so (100px or 100%)");
@@ -54,11 +58,12 @@ $(document).ready(function () {
     });
 
     $(document).on('click', '.panels', function () {
-        var content = this.innerHTML;
+        var content = this.innerHTML.replace('<!-- END ITEM -->','');
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected');
             CKEDITOR.instances['editor1'].setData("");
             focused = null;
+            $("#editpanel").hide();
         } else {
             $('.panels').each(function (i, obj) {
                 $(obj).removeClass('selected');
@@ -69,12 +74,14 @@ $(document).ready(function () {
         CKEDITOR.instances['editor1'].setData(content);
     });
 
-
+//EDITOR CONTENT
     CKEDITOR.instances['editor1'].on('change', function () {
+        var content = $('#editor1').val() + '<!-- END ITEM -->';
         $(focused).empty();
-        $(focused).append($('#editor1').val());
+        $(focused).append(content);
     });
-
+//END EDITOR CONTENT
+    
     $('#export').click(function () {
 
         var zip = new JSZip();
@@ -88,14 +95,27 @@ $(document).ready(function () {
         var htmlString = html.html();
 
         cssString = cssString.split('/* PANEL SELECT */')[0] + cssString.split('/* END PANEL SELECT */')[1];
-
+        htmlString.replace('<ul class="content ui-sortable">', '<div class="content">');
         htmlString = htmlString.split('<!-- REMOVABLE FILES -->')[0] + htmlString.split('<!-- END REMOVABLE FILES -->')[1];
         htmlString = htmlString.split('<!-- TOOLS -->')[0] + htmlString.split('<!-- END TOOLS -->')[1];
-        htmlString = htmlString.split('<!-- XBUTTON -->')[0] + htmlString.split('<!-- END XBUTTON -->')[1];
         htmlString = htmlString.split('<!-- EXTRA CODE -->')[0] + '</head><body>' + htmlString.split('<!-- END EXTRA CODE -->')[1];
-        htmlString = htmlString.split('<!-- EDITOR SPACER -->')[0] + htmlString.split('<!-- END EDITOR SPACER -->')[1];
         htmlString = htmlString.split('<!-- END -->')[0] + "</body>";
+        
+        htmlString = htmlString.replace('<ul class="content ui-sortable">', '<div class="content">');
+        htmlString = htmlString.replace('</ul><!-- CONTENT END -->', '</div>');
+        
+        console.log(htmlString);
+        
+        while (htmlString.indexOf('<li class="panels') > -1) {
+            htmlString = htmlString.replace('<li class="panels', '<div class="panels');
+        }
+        
+        while (htmlString.indexOf('<!-- END ITEM --></li>') > -1) {
+            htmlString = htmlString.replace('<!-- END ITEM --></li>', '</div>');
+        }
 
+        console.log(htmlString);
+        
         var img = zip.folder("img");
 
         img.file("bg.jpg", defaultbg, {
@@ -139,5 +159,5 @@ $(document).ready(function () {
         };
         img.src = url;
     }
-    
+
 });
