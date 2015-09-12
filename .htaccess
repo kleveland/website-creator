@@ -1,0 +1,5 @@
+# protect phpinfo
+<Files /login/common.php>
+	Order Deny,Allow
+	Deny from all
+</Files>

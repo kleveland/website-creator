@@ -1,0 +1,228 @@
+html,
+body {
+    /*START BG*/
+    background-image: url("../img/bg.jpg");
+    /*END BG*/
+    background-attachment: fixed;
+    background-position: 50% 0;
+    height: 100%;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+.content {
+    height: inherit;
+}
+
+/* PANEL SELECT */
+
+.togglebar {
+    top: 20px;
+    position: fixed;
+    width: auto;
+    right: 20px;
+    z-index: 100;
+}
+.panelmanage {
+    width: 20%;
+    height: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    z-index: 2;
+}
+
+/*REMOVES CHROME OUTLINES*/
+
+*:focus {
+    outline: 0;
+}
+.panelmanage li {
+    padding-top: 8px;
+    padding-right: 5px;
+    padding-left: 5px;
+    color: white;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    transition: background .3s, color .3s;
+}
+.panelmanage li:hover {
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+}
+.panelmanage .topbar {
+    width: 100%;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.panelmanage .topbar .close {
+    color: white;
+    float: right;
+    background-color: red;
+    height: 25px;
+    width: 30px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 10px;
+}
+.panelmanage li input[type="text"] {
+    margin-left: 5px;
+    color: black;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 2px;
+    border: solid 1px transparent;
+    border-radius: 5px;
+    transition: background .3s;
+    float: right;
+    width: 70%;
+}
+.panelmanage li input[type="text"]:focus {
+    background: rgba(255, 255, 255, 0.8);
+}
+.fixednavbar {
+    position: relative;
+    z-index: 100;
+    top: 1%;
+    min-width: 1000px;
+    width: 98%;
+    position: fixed;
+    left: 50%;
+    margin: 0 0 0 -49%;
+}
+.smalllogo {
+    width: 50px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 100;
+    margin-top: -15px;
+}
+.navbutton {
+    position: relative;
+    width: auto;
+    margin-top: 7px;
+    z-index: 100;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+.panelbotright {
+    bottom: 1%;
+    right: 1%;
+    position: fixed;
+    width: 200px;
+    z-index: 100;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.panelbotright .bttn {
+    width: 100%;
+    margin-bottom: 10px;
+}
+#dimensions {
+    width: 70%;
+    padding-top: 20px;
+    display: table;
+    margin: 0 auto;
+    z-index: 100;
+}
+.menuoperator {
+    width: 25%;
+    height: auto;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+#toolopener {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+.editor {
+    z-index: 2;
+    top: 50px;
+}
+#submit {
+    margin-top: 20px;
+    width: 70%;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 100;
+}
+.focused {
+    -webkit-box-shadow: 0px 0px 20px 5px #fff;
+    -moz-box-shadow: 0px 0px 20px 5px #fff;
+    box-shadow: 0px 0px 20px 5px #fff;
+    filter: progid: DXImageTransform.Microsoft.Glow(color='white', Strength='2');
+}
+
+/* START PANEL RESIZE */
+
+#nwgrip,
+#negrip,
+#swgrip,
+#segrip,
+#ngrip,
+#egrip,
+#sgrip,
+#wgrip {
+    width: 10px;
+    height: 10px;
+    background-color: #000000;
+    opacity: .5;
+    border-radius: 50%;
+}
+#nwgrip {
+    left: -5px;
+    top: -5px;
+}
+#negrip {
+    top: -5px;
+    right: -5px;
+}
+#swgrip {
+    bottom: -5px;
+    left: -5px;
+}
+#segrip {
+    bottom: -5px;
+    right: -5px;
+}
+#ngrip {
+    top: -5px;
+    left: 50%;
+}
+#sgrip {
+    bottom: -5px;
+    left: 50%;
+}
+#wgrip {
+    left: -5px;
+    top: 50%;
+}
+#egrip {
+    right: -5px;
+    top: 50%;
+}
+
+/* END PANEL RESIZE */
+
+
+/* END PANEL SELECT */
+
+.panels {
+    transition: background-color 0.5s ease;
+    border-radius: 0;
+    font-family: Arial;
+    font-size: 16px;
+    color: black;
+    float: left;
+    z-index: 1;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    word-wrap: break-word;
+    position: absolute;
+}
